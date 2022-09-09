@@ -10,8 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-$this->group(['middleware'=> ['auth'], 'namespace'=>'admin'] , function() {
-    $this->get('admin', 'AdminController@index')->name('admin.home');
+$this->group(['middleware'=> ['auth'], 'namespace'=>'admin' , 'prefix'=>'admin'] , function() {
+    $this->post('deposit', 'BalanceController@depositStore')->name('deposit.store');
+    $this->get('deposit', 'BalanceController@deposit')->name('balance.deposit');
+
+    $this->get('balance', 'BalanceController@index')->name('balance.index');
+
+    $this->get('/', 'AdminController@index')->name('admin.home');
 
 });
 
