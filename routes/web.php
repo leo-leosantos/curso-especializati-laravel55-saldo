@@ -36,6 +36,9 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'admin' , 'prefix'=>'admin']
 
 Route::get('/', 'Site\SiteController@index')->name('site.home');
 
+Route::get('meu-perfil', 'Admin\UserController@profile')->name('profile')->middleware('auth');
+Route::post('atualizar-perfil', 'Admin\UserController@profileUpdate')->name('profile.update')->middleware('auth');
+
 
 Auth::routes();
 
