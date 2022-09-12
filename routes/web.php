@@ -12,8 +12,11 @@
 */
 $this->group(['middleware'=> ['auth'], 'namespace'=>'admin' , 'prefix'=>'admin'] , function() {
 
-    
+    $this->get('historic','BalanceController@historic')->name('admin.historic');
     $this->post('withdraw', 'BalanceController@withdrawStore')->name('balance.withdraw.store');
+    $this->any('historic-search','BalanceController@searchHistoric')->name('balance.searchHistoric');
+
+
     $this->get('withdraw', 'BalanceController@withdraw')->name('balance.withdraw');
 
     $this->get('transfer', 'BalanceController@transfer')->name('balance.transfer');

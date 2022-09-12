@@ -23,14 +23,14 @@
         <div class="box-body">
 
             @include('admin.includes.alerts')
-            
+            <p><Strong>Seu Saldo Atual: R$  {{number_format($balance->amount, 2 ,',', '.') }}</Strong></p>
             <form class="form" action="{{ route('balance.confirm-transfer-store') }}" method="POST">
                 {!! csrf_field() !!}
 
                 <input type="hidden" name="sender_id" value="{{ $sender->id }}">
                 <div class="form-group">
                     <label for="sender">Valor da Transferência</label>
-                    <input type="number" min="0" class="form-control" name="balance" placeholder="Informe o valor da transferência">
+                    <input type="number" min="0" class="form-control" name="value" placeholder="Informe o valor da transferência">
                 </div>
                 <div class="form-group">
                     <label>Nome de quem vai receber</label>
